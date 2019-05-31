@@ -115,6 +115,10 @@ fn main() -> std::io::Result<()> {
             (data_size & 0x00ff0000) >> 16,
             (data_size & 0xff000000) >> 24)?;
 
+        for j in 0..4 {
+            write!(&mut output, "\t0x00, 0x00, 0x00, 0x00, // int32_t reserved[{}]\n", j)?;
+        }
+
         write!(&mut output, "\t")?;
         for j in 0..data_size {
             write!(&mut output, "0x{:02x}, ", data[j as usize])?;
