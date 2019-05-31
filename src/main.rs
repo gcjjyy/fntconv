@@ -36,11 +36,7 @@ fn main() -> std::io::Result<()> {
     // Calculate total data size
     for _i in 0..glyph_count {
         input.read(&mut buf)?;
-        let utf8_code = (buf[0] as u32) | ((buf[1] as u32) << 8) | ((buf[2] as u32) << 16) | ((buf[3] as u32) << 24);
-
         input.read(&mut buf)?;
-        let font_width = (buf[0] as u32) | ((buf[1] as u32) << 8) | ((buf[2] as u32) << 16) | ((buf[3] as u32) << 24);
-
         input.read(&mut buf)?;
         let data_size = (buf[0] as u32) | ((buf[1] as u32) << 8) | ((buf[2] as u32) << 16) | ((buf[3] as u32) << 24);
 
